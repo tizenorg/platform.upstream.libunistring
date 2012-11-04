@@ -6,7 +6,6 @@ Summary:        GNU Unicode string library
 Url:            http://www.gnu.org/software/libunistring/
 Group:          Development/Libraries/C and C++
 Source:         %{name}-%{version}.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This portable C library implements Unicode string types in three flavours:
@@ -20,8 +19,6 @@ Summary:        GNU Unicode string library - development files
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       info
-Obsoletes:      %{name} < %{version}-%{release}
-Provides:       %{name} = %{version}-%{release}
 
 %description devel
 Development files for programs using libunistring and documentation
@@ -34,29 +31,23 @@ for UniString library.
 %configure --disable-static --disable-rpath --docdir=%_docdir/%{name}
 make %{?_smp_mflags}
 
-%install
-echo " " > debugsources.list
-%make_install DESTDIR=%{buildroot} INSTALL="install -p"
-cp AUTHORS NEWS README HACKING DEPENDENCIES THANKS ChangeLog %{buildroot}/%{_docdir}/%{name}
-rm -f %{buildroot}/%{_infodir}/dir
-rm -f %{buildroot}/%{_libdir}/libunistring.la
-
 %check
 %if ! 0%{?qemu_user_space_build}
 make check %{?_smp_mflags}
 %endif
 
-%post -n %{name} -p /sbin/ldconfig
+%install
+echo " " > debugsources.list
+%make_install DESTDIR=%{buildroot} INSTALL="install -p"
+rm -f %{buildroot}/%{_infodir}/dir
+rm -f %{buildroot}/%{_libdir}/libunistring.la
 
-%postun -n %{name} -p /sbin/ldconfig
 
-%post devel
-/sbin/install-info %{_infodir}/libunistring.info.gz %{_infodir}/dir || :
+%remove_docs
 
-%preun devel
-if [ "$1" = 0 ]; then
-   /sbin/install-info --delete %{_infodir}/libunistring.info.gz %{_infodir}/dir || :
-fi
+%post  -p /sbin/ldconfig
+
+%postun -p /sbin/ldconfig
 
 
 %files
@@ -65,8 +56,6 @@ fi
 
 %files devel
 %defattr(-,root,root)
-%_docdir/%{name}
-%{_infodir}/libunistring.info*
 %{_libdir}/libunistring.so
 %{_includedir}/unistring
 %{_includedir}/*.h
