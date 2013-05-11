@@ -51,6 +51,7 @@ rm -f %{buildroot}/%{_libdir}/libunistring.la
 
 
 %files
+%license COPYING
 %defattr(-,root,root)
 %{_libdir}/libunistring.so.0*
 
