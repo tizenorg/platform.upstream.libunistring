@@ -6,6 +6,7 @@ Summary:        GNU Unicode string library
 Url:            http://www.gnu.org/software/libunistring/
 Group:          Development/Libraries/C and C++
 Source:         %{name}-%{version}.tar.bz2
+Source1001: 	libunistring.manifest
 
 %description
 This portable C library implements Unicode string types in three flavours:
@@ -26,6 +27,7 @@ for UniString library.
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 %configure --disable-static --disable-rpath --docdir=%_docdir/%{name}
@@ -51,11 +53,13 @@ rm -f %{buildroot}/%{_libdir}/libunistring.la
 
 
 %files
+%manifest %{name}.manifest
 %license COPYING
 %defattr(-,root,root)
 %{_libdir}/libunistring.so.0*
 
 %files devel
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %{_libdir}/libunistring.so
 %{_includedir}/unistring
