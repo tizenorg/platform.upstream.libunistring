@@ -1,12 +1,12 @@
 Name:           libunistring
-Version:        0.9.3
+Version:        0.9.4
 Release:        0
 License:        LGPL-3.0+ and GPL-3.0+
 Summary:        GNU Unicode string library
 Url:            http://www.gnu.org/software/libunistring/
 Group:          Development/Libraries/C and C++
 Source:         %{name}-%{version}.tar.bz2
-Source1001: 	libunistring.manifest
+Source1001:     libunistring.manifest
 
 %description
 This portable C library implements Unicode string types in three flavours:
@@ -31,11 +31,11 @@ cp %{SOURCE1001} .
 
 %build
 %configure --disable-static --disable-rpath --docdir=%_docdir/%{name}
-make %{?_smp_mflags}
+%__make %{?_smp_mflags}
 
 %check
 %if ! 0%{?qemu_user_space_build}
-make check %{?_smp_mflags}
+%__make check %{?_smp_mflags}
 %endif
 
 %install
@@ -56,7 +56,7 @@ rm -f %{buildroot}/%{_libdir}/libunistring.la
 %manifest %{name}.manifest
 %license COPYING
 %defattr(-,root,root)
-%{_libdir}/libunistring.so.0*
+%{_libdir}/libunistring.so.2*
 
 %files devel
 %manifest %{name}.manifest
@@ -64,4 +64,3 @@ rm -f %{buildroot}/%{_libdir}/libunistring.la
 %{_libdir}/libunistring.so
 %{_includedir}/unistring
 %{_includedir}/*.h
-
