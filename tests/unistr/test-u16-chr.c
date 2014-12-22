@@ -1,5 +1,5 @@
 /* Test of u16_chr() function.
-   Copyright (C) 2010 Free Software Foundation, Inc.
+   Copyright (C) 2010-2014 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -21,11 +21,14 @@
 #include "unistr.h"
 
 #include <stdlib.h>
+#include <string.h>
 
 #include "zerosize-ptr.h"
 #include "macros.h"
 
 #define UNIT uint16_t
+#define U_UCTOMB u16_uctomb
+#define U32_TO_U u32_to_u16
 #define U_CHR u16_chr
 #define U_SET u16_set
 #include "test-chr.h"

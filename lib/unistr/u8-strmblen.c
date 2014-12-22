@@ -1,5 +1,5 @@
 /* Look at first character in UTF-8 string.
-   Copyright (C) 1999-2000, 2002, 2006-2007, 2009-2010 Free Software
+   Copyright (C) 1999-2000, 2002, 2006-2007, 2009-2014 Free Software
    Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2002.
 
@@ -24,7 +24,7 @@
 int
 u8_strmblen (const uint8_t *s)
 {
-  /* Keep in sync with unistr.h and utf8-ucs4.c.  */
+  /* Keep in sync with unistr.h and u8-mbtouc-aux.c.  */
   uint8_t c = *s;
 
   if (c < 0x80)

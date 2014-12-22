@@ -158,6 +158,7 @@ A copy of the license is included in @ref{GNU GPL}.
 * uniname.h::                   Names of Unicode characters
 * unictype.h::                  Unicode character classification and properties
 * uniwidth.h::                  Display width
+* unigbrk.h::                   Grapheme cluster breaking
 * uniwbrk.h::                   Word breaks in strings
 * unilbrk.h::                   Line breaking
 * uninorm.h::                   Normalization forms
@@ -194,11 +195,12 @@ unictype.h
 
 * General category::
 * Canonical combining class::
-* Bidirectional category::
+* Bidi class::
 * Decimal digit value::
 * Digit value::
 * Numeric value::
 * Mirrored character::
+* Arabic shaping::
 * Properties::
 * Scripts::
 * Blocks::
@@ -214,6 +216,11 @@ Properties
 
 * Properties as objects::
 * Properties as functions::
+
+unigbrk.h
+
+* Grapheme cluster breaks in a string::
+* Grapheme cluster break property::
 
 uniwbrk.h
 
@@ -274,6 +281,8 @@ character names
 character classification and properties
 @item <uniwidth.h>
 string width when using nonproportional fonts
+@item <unigbrk.h>
+grapheme cluster breaks
 @item <uniwbrk.h>
 word breaks
 @item <unilbrk.h>
@@ -754,6 +763,7 @@ NULL is returned and @code{errno} is set.
 @include uniname.texi
 @include unictype.texi
 @include uniwidth.texi
+@include unigbrk.texi
 @include uniwbrk.texi
 @include unilbrk.texi
 @include uninorm.texi

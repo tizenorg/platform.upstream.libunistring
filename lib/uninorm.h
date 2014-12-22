@@ -1,5 +1,6 @@
+/* DO NOT EDIT! GENERATED AUTOMATICALLY! */
 /* Normalization forms (composition and decomposition) of Unicode strings.
-   Copyright (C) 2001-2002, 2009-2010 Free Software Foundation, Inc.
+   Copyright (C) 2001-2002, 2009-2014 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2009.
 
    This program is free software: you can redistribute it and/or modify it
@@ -102,7 +103,8 @@ extern int
    Not all decompositions can be recombined using this function.  See the
    Unicode file CompositionExclusions.txt for details.  */
 extern ucs4_t
-       uc_composition (ucs4_t uc1, ucs4_t uc2);
+       uc_composition (ucs4_t uc1, ucs4_t uc2)
+       _UC_ATTRIBUTE_CONST;
 
 
 /* An object of type uninorm_t denotes a Unicode normalization form.  */
@@ -137,7 +139,9 @@ extern LIBUNISTRING_DLL_VARIABLE const struct unicode_normalization_form uninorm
 
 /* Return the decomposing variant of a normalization form.
    This maps NFC,NFD -> NFD and NFKC,NFKD -> NFKD.  */
-extern uninorm_t uninorm_decomposing_form (uninorm_t nf);
+extern uninorm_t
+       uninorm_decomposing_form (uninorm_t nf)
+       _UC_ATTRIBUTE_PURE;
 
 
 /* Return the specified normalization form of a string.  */

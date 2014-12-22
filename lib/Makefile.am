@@ -1,5 +1,5 @@
 ## Makefile for the lib subdirectory of GNU libunistring.
-## Copyright (C) 2009-2010 Free Software Foundation, Inc.
+## Copyright (C) 2009-2011 Free Software Foundation, Inc.
 ##
 ## This program is free software: you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@ AUTOMAKE_OPTIONS = 1.5 gnits subdir-objects no-dependencies
 EXTRA_DIST =
 BUILT_SOURCES =
 MOSTLYCLEANFILES = core *.stackdump
+MOSTLYCLEANDIRS =
 CLEANFILES =
 DISTCLEANFILES =
 MAINTAINERCLEANFILES =
@@ -35,6 +36,7 @@ nobase_include_HEADERS = \
   uniname.h \
   unictype.h \
   uniwidth.h \
+  unigbrk.h \
   uniwbrk.h \
   unilbrk.h \
   uninorm.h \
@@ -157,7 +159,7 @@ nobase_nodist_include_HEADERS += unistring/version.h
 
 # unistring/cdefs.h is not public, but is included by other header files.
 nobase_nodist_include_HEADERS += unistring/cdefs.h
-unistring/cdefs.h : unistring/cdefs.in.h
+unistring/cdefs.h : unistring/cdefs.in.h $(UNUSED_PARAMETER_H)
 	@MKDIR_P@ unistring
 	rm -f $@-t $@
 	sed -e '/definition of _GL_UNUSED_PARAMETER/r $(UNUSED_PARAMETER_H)' \
@@ -199,6 +201,7 @@ HEADERS_WITH_EXTERNS = \
   uniname.h \
   unictype.h \
   uniwidth.h \
+  unigbrk.h \
   uniwbrk.h \
   unilbrk.h \
   uninorm.h \
@@ -208,15 +211,22 @@ HEADERS_WITH_EXTERNS = \
   unistring/version.in.h
 
 # List of exported symbols.
-# We extract it from the header files that get installed, removing symbols
-# start with "_UC".
+# We extract it from the header files that get installed.
+# We keep symbols that start with "_UC", because they may be needed for
+# compiling newer versions of gnulib modules when the gnulib module
+# 'libunistring-optional' is in use.
 # This file has the same format as the one expected by the libtool option
 # '-export-symbols', but we don't use this option, because it would prevent us
 # from building some of the gnulib unit tests.
 libunistring.sym : $(HEADERS_WITH_EXTERNS)
-	for f in $(HEADERS_WITH_EXTERNS); do cat $(srcdir)/$$f; done \
+	for f in $(HEADERS_WITH_EXTERNS); do \
+	  if test -f $$f; then \
+	    cat $$f; \
+	  else \
+	    cat $(srcdir)/$$f; \
+	  fi; \
+	done \
 	  | $(srcdir)/declared.sh | LC_ALL=C sort | LC_ALL=C uniq \
-	  | grep -v '^_UC' \
 	  > $@-t
 	mv $@-t $@
 # We distribute it because declared.sh relies on GNU sed.
@@ -301,12 +311,11 @@ AM_CPPFLAGS += -DDEPENDS_ON_LIBICONV=1
 
 # Libtool's library version information for libunistring.
 # See the libtool documentation, section "Library interface versions".
-LTV_CURRENT=1
-LTV_REVISION=2
-LTV_AGE=1
+LTV_CURRENT=2
+LTV_REVISION=0
+LTV_AGE=0
 
 # How to build libunistring.la.
 libunistring_la_LDFLAGS += \
   -version-info $(LTV_CURRENT):$(LTV_REVISION):$(LTV_AGE) \
-  -rpath $(libdir) \
-  @INTL_MACOSX_LIBS@ -no-undefined
+  -rpath $(libdir)

@@ -1,5 +1,5 @@
 /* Compare UTF-8 strings using the collation rules of the current locale.
-   Copyright (C) 2009-2010 Free Software Foundation, Inc.
+   Copyright (C) 2009-2014 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2009.
 
    This program is free software: you can redistribute it and/or modify it
@@ -29,5 +29,5 @@
 #define FUNC u8_strcoll
 #define UNIT uint8_t
 #define U_STRCMP u8_strcmp
-#define U_STRCONV_TO_LOCALE u8_strconv_to_locale
+#define U_STRCONV_TO_ENCODING u8_strconv_to_encoding
 #include "u-strcoll.h"

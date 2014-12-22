@@ -1,5 +1,5 @@
 /* Conversion from UTF-16 to legacy encodings.
-   Copyright (C) 2002, 2006-2010 Free Software Foundation, Inc.
+   Copyright (C) 2002, 2006-2014 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify it
    under the terms of the GNU Lesser General Public License as published
@@ -31,7 +31,7 @@
 #define SIZEOF(array) (sizeof (array) / sizeof (array[0]))
 
 /* Name of UTF-16 encoding with machine dependent endianness and alignment.  */
-#if defined _LIBICONV_VERSION || (__GLIBC__ > 2) || (__GLIBC__ == 2 && __GLIBC_MINOR__ >= 2)
+#if defined _LIBICONV_VERSION || (((__GLIBC__ > 2) || (__GLIBC__ == 2 && __GLIBC_MINOR__ >= 2)) && !defined __UCLIBC__)
 # ifdef WORDS_BIGENDIAN
 #  define UTF16_NAME "UTF-16BE"
 # else

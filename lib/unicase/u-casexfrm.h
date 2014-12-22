@@ -1,6 +1,6 @@
 /* Locale dependent transformation for case insensitive comparison of Unicode
    strings.
-   Copyright (C) 2009-2010 Free Software Foundation, Inc.
+   Copyright (C) 2009-2014 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2009.
 
    This program is free software: you can redistribute it and/or modify it
@@ -70,7 +70,7 @@ FUNC (const UNIT *s, size_t n, const char *iso639_language, uninorm_t nf,
     }
 
   /* Apply locale dependent transformations for comparison.  */
-  result = memxfrm (convs, convs_length, resultbuf, lengthp);
+  result = amemxfrm (convs, convs_length, resultbuf, lengthp);
   if (result == NULL)
     {
       if (convs != convsbuf)
