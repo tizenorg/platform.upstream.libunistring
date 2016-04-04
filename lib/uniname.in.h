@@ -29,12 +29,12 @@ extern "C" {
 
 /* Looks up the name of a Unicode character, in uppercase ASCII.
    Returns the filled buf, or NULL if the character does not have a name.  */
-extern char *
+__attribute__ ((visibility ("default"))) extern char *
        unicode_character_name (ucs4_t uc, char *buf);
 
 /* Looks up the Unicode character with a given name, in upper- or lowercase
    ASCII.  Returns the character if found, or UNINAME_INVALID if not found.  */
-extern ucs4_t
+__attribute__ ((visibility ("default"))) extern ucs4_t
        unicode_name_character (const char *name)
        _UC_ATTRIBUTE_PURE;
 #define UNINAME_INVALID ((ucs4_t) 0xFFFF)

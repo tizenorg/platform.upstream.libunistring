@@ -56,7 +56,7 @@ enum
 };
 
 /* Return the Grapheme_Cluster_Break property of a Unicode character. */
-extern int
+__attribute__ ((visibility ("default"))) extern int
        uc_graphemeclusterbreak_property (ucs4_t uc)
        _UC_ATTRIBUTE_CONST;
 
@@ -77,31 +77,31 @@ extern int
 
    Use A == 0 or B == 0 to indicate start of text or end of text,
    respectively. */
-extern bool
+__attribute__ ((visibility ("default"))) extern bool
        uc_is_grapheme_break (ucs4_t a, ucs4_t b)
        _UC_ATTRIBUTE_CONST;
 
 /* Returns the start of the next grapheme cluster following S, or NULL if the
    end of the string has been reached. */
-extern const uint8_t *
+__attribute__ ((visibility ("default"))) extern const uint8_t *
        u8_grapheme_next (const uint8_t *s, const uint8_t *end)
        _UC_ATTRIBUTE_PURE;
-extern const uint16_t *
+__attribute__ ((visibility ("default"))) extern const uint16_t *
        u16_grapheme_next (const uint16_t *s, const uint16_t *end)
        _UC_ATTRIBUTE_PURE;
-extern const uint32_t *
+__attribute__ ((visibility ("default"))) extern const uint32_t *
        u32_grapheme_next (const uint32_t *s, const uint32_t *end)
        _UC_ATTRIBUTE_PURE;
 
 /* Returns the start of the previous grapheme cluster before S, or NULL if the
    start of the string has been reached. */
-extern const uint8_t *
+__attribute__ ((visibility ("default"))) extern const uint8_t *
        u8_grapheme_prev (const uint8_t *s, const uint8_t *start)
        _UC_ATTRIBUTE_PURE;
-extern const uint16_t *
+__attribute__ ((visibility ("default"))) extern const uint16_t *
        u16_grapheme_prev (const uint16_t *s, const uint16_t *start)
        _UC_ATTRIBUTE_PURE;
-extern const uint32_t *
+__attribute__ ((visibility ("default"))) extern const uint32_t *
        u32_grapheme_prev (const uint32_t *s, const uint32_t *start)
        _UC_ATTRIBUTE_PURE;
 
@@ -110,13 +110,13 @@ extern const uint32_t *
    = 0 means that s[i-1] and s[i] are part of the same grapheme cluster.  p[0]
    will always be 1.
  */
-extern void
+__attribute__ ((visibility ("default"))) extern void
        u8_grapheme_breaks (const uint8_t *s, size_t n, char *p);
-extern void
+__attribute__ ((visibility ("default"))) extern void
        u16_grapheme_breaks (const uint16_t *s, size_t n, char *p);
-extern void
+__attribute__ ((visibility ("default"))) extern void
        u32_grapheme_breaks (const uint32_t *s, size_t n, char *p);
-extern void
+__attribute__ ((visibility ("default"))) extern void
        ulc_grapheme_breaks (const char *s, size_t n, char *p);
 
 /* ========================================================================= */

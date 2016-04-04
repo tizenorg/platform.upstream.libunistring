@@ -38,30 +38,30 @@ extern "C" {
    the encoding (e.g. "ISO-8859-2" for Polish).  */
 
 /* Determine number of column positions required for UC.  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
        uc_width (ucs4_t uc, const char *encoding)
        _UC_ATTRIBUTE_PURE;
 
 /* Determine number of column positions required for first N units
    (or fewer if S ends before this) in S.  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u8_width (const uint8_t *s, size_t n, const char *encoding)
        _UC_ATTRIBUTE_PURE;
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u16_width (const uint16_t *s, size_t n, const char *encoding)
        _UC_ATTRIBUTE_PURE;
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u32_width (const uint32_t *s, size_t n, const char *encoding)
        _UC_ATTRIBUTE_PURE;
 
 /* Determine number of column positions required for S.  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u8_strwidth (const uint8_t *s, const char *encoding)
        _UC_ATTRIBUTE_PURE;
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u16_strwidth (const uint16_t *s, const char *encoding)
        _UC_ATTRIBUTE_PURE;
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u32_strwidth (const uint32_t *s, const char *encoding)
        _UC_ATTRIBUTE_PURE;
 

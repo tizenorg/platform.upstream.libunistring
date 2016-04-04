@@ -42,17 +42,17 @@ extern "C" {
    language aware.  */
 
 /* Return the uppercase mapping of a Unicode character.  */
-extern ucs4_t
+__attribute__ ((visibility ("default"))) extern ucs4_t
        uc_toupper (ucs4_t uc)
        _UC_ATTRIBUTE_CONST;
 
 /* Return the lowercase mapping of a Unicode character.  */
-extern ucs4_t
+__attribute__ ((visibility ("default"))) extern ucs4_t
        uc_tolower (ucs4_t uc)
        _UC_ATTRIBUTE_CONST;
 
 /* Return the titlecase mapping of a Unicode character.  */
-extern ucs4_t
+__attribute__ ((visibility ("default"))) extern ucs4_t
        uc_totitle (ucs4_t uc)
        _UC_ATTRIBUTE_CONST;
 
@@ -66,7 +66,7 @@ extern ucs4_t
 
 /* Return the ISO 639 language code of the current locale.
    Return "" if it is unknown, or in the "C" locale.  */
-extern const char *
+__attribute__ ((visibility ("default"))) extern const char *
        uc_locale_language (void)
        _UC_ATTRIBUTE_PURE;
 
@@ -94,15 +94,15 @@ extern const char *
 /* Return the uppercase mapping of a string.
    The nf argument identifies the normalization form to apply after the
    case-mapping.  It can also be NULL, for no normalization.  */
-extern uint8_t *
+__attribute__ ((visibility ("default"))) extern uint8_t *
        u8_toupper (const uint8_t *s, size_t n, const char *iso639_language,
                    uninorm_t nf,
                    uint8_t *resultbuf, size_t *lengthp);
-extern uint16_t *
+__attribute__ ((visibility ("default"))) extern uint16_t *
        u16_toupper (const uint16_t *s, size_t n, const char *iso639_language,
                     uninorm_t nf,
                     uint16_t *resultbuf, size_t *lengthp);
-extern uint32_t *
+__attribute__ ((visibility ("default"))) extern uint32_t *
        u32_toupper (const uint32_t *s, size_t n, const char *iso639_language,
                     uninorm_t nf,
                     uint32_t *resultbuf, size_t *lengthp);
@@ -110,15 +110,15 @@ extern uint32_t *
 /* Return the lowercase mapping of a string.
    The nf argument identifies the normalization form to apply after the
    case-mapping.  It can also be NULL, for no normalization.  */
-extern uint8_t *
+__attribute__ ((visibility ("default"))) extern uint8_t *
        u8_tolower (const uint8_t *s, size_t n, const char *iso639_language,
                    uninorm_t nf,
                    uint8_t *resultbuf, size_t *lengthp);
-extern uint16_t *
+__attribute__ ((visibility ("default"))) extern uint16_t *
        u16_tolower (const uint16_t *s, size_t n, const char *iso639_language,
                     uninorm_t nf,
                     uint16_t *resultbuf, size_t *lengthp);
-extern uint32_t *
+__attribute__ ((visibility ("default"))) extern uint32_t *
        u32_tolower (const uint32_t *s, size_t n, const char *iso639_language,
                     uninorm_t nf,
                     uint32_t *resultbuf, size_t *lengthp);
@@ -126,15 +126,15 @@ extern uint32_t *
 /* Return the titlecase mapping of a string.
    The nf argument identifies the normalization form to apply after the
    case-mapping.  It can also be NULL, for no normalization.  */
-extern uint8_t *
+__attribute__ ((visibility ("default"))) extern uint8_t *
        u8_totitle (const uint8_t *s, size_t n, const char *iso639_language,
                    uninorm_t nf,
                    uint8_t *resultbuf, size_t *lengthp);
-extern uint16_t *
+__attribute__ ((visibility ("default"))) extern uint16_t *
        u16_totitle (const uint16_t *s, size_t n, const char *iso639_language,
                     uninorm_t nf,
                     uint16_t *resultbuf, size_t *lengthp);
-extern uint32_t *
+__attribute__ ((visibility ("default"))) extern uint32_t *
        u32_totitle (const uint32_t *s, size_t n, const char *iso639_language,
                     uninorm_t nf,
                     uint32_t *resultbuf, size_t *lengthp);
@@ -150,21 +150,21 @@ typedef struct casing_prefix_context
 /* The case-mapping context of the empty prefix string.  */
 extern LIBUNISTRING_DLL_VARIABLE const casing_prefix_context_t unicase_empty_prefix_context;
 /* Return the case-mapping context of a given prefix string.  */
-extern casing_prefix_context_t
+__attribute__ ((visibility ("default"))) extern casing_prefix_context_t
        u8_casing_prefix_context (const uint8_t *s, size_t n);
-extern casing_prefix_context_t
+__attribute__ ((visibility ("default"))) extern casing_prefix_context_t
        u16_casing_prefix_context (const uint16_t *s, size_t n);
-extern casing_prefix_context_t
+__attribute__ ((visibility ("default"))) extern casing_prefix_context_t
        u32_casing_prefix_context (const uint32_t *s, size_t n);
 /* Return the case-mapping context of the prefix concat(A, S), given the
    case-mapping context of the prefix A.  */
-extern casing_prefix_context_t
+__attribute__ ((visibility ("default"))) extern casing_prefix_context_t
        u8_casing_prefixes_context (const uint8_t *s, size_t n,
                                    casing_prefix_context_t a_context);
-extern casing_prefix_context_t
+__attribute__ ((visibility ("default"))) extern casing_prefix_context_t
        u16_casing_prefixes_context (const uint16_t *s, size_t n,
                                     casing_prefix_context_t a_context);
-extern casing_prefix_context_t
+__attribute__ ((visibility ("default"))) extern casing_prefix_context_t
        u32_casing_prefixes_context (const uint32_t *s, size_t n,
                                     casing_prefix_context_t a_context);
 
@@ -179,41 +179,41 @@ typedef struct casing_suffix_context
 /* The case-mapping context of the empty suffix string.  */
 extern LIBUNISTRING_DLL_VARIABLE const casing_suffix_context_t unicase_empty_suffix_context;
 /* Return the case-mapping context of a given suffix string.  */
-extern casing_suffix_context_t
+__attribute__ ((visibility ("default"))) extern casing_suffix_context_t
        u8_casing_suffix_context (const uint8_t *s, size_t n);
-extern casing_suffix_context_t
+__attribute__ ((visibility ("default"))) extern casing_suffix_context_t
        u16_casing_suffix_context (const uint16_t *s, size_t n);
-extern casing_suffix_context_t
+__attribute__ ((visibility ("default"))) extern casing_suffix_context_t
        u32_casing_suffix_context (const uint32_t *s, size_t n);
 /* Return the case-mapping context of the suffix concat(S, A), given the
    case-mapping context of the suffix A.  */
-extern casing_suffix_context_t
+__attribute__ ((visibility ("default"))) extern casing_suffix_context_t
        u8_casing_suffixes_context (const uint8_t *s, size_t n,
                                    casing_suffix_context_t a_context);
-extern casing_suffix_context_t
+__attribute__ ((visibility ("default"))) extern casing_suffix_context_t
        u16_casing_suffixes_context (const uint16_t *s, size_t n,
                                     casing_suffix_context_t a_context);
-extern casing_suffix_context_t
+__attribute__ ((visibility ("default"))) extern casing_suffix_context_t
        u32_casing_suffixes_context (const uint32_t *s, size_t n,
                                     casing_suffix_context_t a_context);
 
 /* Return the uppercase mapping of a string that is surrounded by a prefix
    and a suffix.  */
-extern uint8_t *
+__attribute__ ((visibility ("default"))) extern uint8_t *
        u8_ct_toupper (const uint8_t *s, size_t n,
                       casing_prefix_context_t prefix_context,
                       casing_suffix_context_t suffix_context,
                       const char *iso639_language,
                       uninorm_t nf,
                       uint8_t *resultbuf, size_t *lengthp);
-extern uint16_t *
+__attribute__ ((visibility ("default"))) extern uint16_t *
        u16_ct_toupper (const uint16_t *s, size_t n,
                       casing_prefix_context_t prefix_context,
                       casing_suffix_context_t suffix_context,
                       const char *iso639_language,
                       uninorm_t nf,
                       uint16_t *resultbuf, size_t *lengthp);
-extern uint32_t *
+__attribute__ ((visibility ("default"))) extern uint32_t *
        u32_ct_toupper (const uint32_t *s, size_t n,
                       casing_prefix_context_t prefix_context,
                       casing_suffix_context_t suffix_context,
@@ -223,21 +223,21 @@ extern uint32_t *
 
 /* Return the lowercase mapping of a string that is surrounded by a prefix
    and a suffix.  */
-extern uint8_t *
+__attribute__ ((visibility ("default"))) extern uint8_t *
        u8_ct_tolower (const uint8_t *s, size_t n,
                       casing_prefix_context_t prefix_context,
                       casing_suffix_context_t suffix_context,
                       const char *iso639_language,
                       uninorm_t nf,
                       uint8_t *resultbuf, size_t *lengthp);
-extern uint16_t *
+__attribute__ ((visibility ("default"))) extern uint16_t *
        u16_ct_tolower (const uint16_t *s, size_t n,
                       casing_prefix_context_t prefix_context,
                       casing_suffix_context_t suffix_context,
                       const char *iso639_language,
                       uninorm_t nf,
                       uint16_t *resultbuf, size_t *lengthp);
-extern uint32_t *
+__attribute__ ((visibility ("default"))) extern uint32_t *
        u32_ct_tolower (const uint32_t *s, size_t n,
                       casing_prefix_context_t prefix_context,
                       casing_suffix_context_t suffix_context,
@@ -247,21 +247,21 @@ extern uint32_t *
 
 /* Return the titlecase mapping of a string that is surrounded by a prefix
    and a suffix.  */
-extern uint8_t *
+__attribute__ ((visibility ("default"))) extern uint8_t *
        u8_ct_totitle (const uint8_t *s, size_t n,
                       casing_prefix_context_t prefix_context,
                       casing_suffix_context_t suffix_context,
                       const char *iso639_language,
                       uninorm_t nf,
                       uint8_t *resultbuf, size_t *lengthp);
-extern uint16_t *
+__attribute__ ((visibility ("default"))) extern uint16_t *
        u16_ct_totitle (const uint16_t *s, size_t n,
                       casing_prefix_context_t prefix_context,
                       casing_suffix_context_t suffix_context,
                       const char *iso639_language,
                       uninorm_t nf,
                       uint16_t *resultbuf, size_t *lengthp);
-extern uint32_t *
+__attribute__ ((visibility ("default"))) extern uint32_t *
        u32_ct_totitle (const uint32_t *s, size_t n,
                       casing_prefix_context_t prefix_context,
                       casing_suffix_context_t suffix_context,
@@ -274,34 +274,34 @@ extern uint32_t *
    to comparing S1 and S2 with uN_casecmp().
    The nf argument identifies the normalization form to apply after the
    case-mapping.  It can also be NULL, for no normalization.  */
-extern uint8_t *
+__attribute__ ((visibility ("default"))) extern uint8_t *
        u8_casefold (const uint8_t *s, size_t n, const char *iso639_language,
                     uninorm_t nf,
                     uint8_t *resultbuf, size_t *lengthp);
-extern uint16_t *
+__attribute__ ((visibility ("default"))) extern uint16_t *
        u16_casefold (const uint16_t *s, size_t n, const char *iso639_language,
                      uninorm_t nf,
                      uint16_t *resultbuf, size_t *lengthp);
-extern uint32_t *
+__attribute__ ((visibility ("default"))) extern uint32_t *
        u32_casefold (const uint32_t *s, size_t n, const char *iso639_language,
                      uninorm_t nf,
                      uint32_t *resultbuf, size_t *lengthp);
 /* Likewise, for a string that is surrounded by a prefix and a suffix.  */
-extern uint8_t *
+__attribute__ ((visibility ("default"))) extern uint8_t *
        u8_ct_casefold (const uint8_t *s, size_t n,
                        casing_prefix_context_t prefix_context,
                        casing_suffix_context_t suffix_context,
                        const char *iso639_language,
                        uninorm_t nf,
                        uint8_t *resultbuf, size_t *lengthp);
-extern uint16_t *
+__attribute__ ((visibility ("default"))) extern uint16_t *
        u16_ct_casefold (const uint16_t *s, size_t n,
                         casing_prefix_context_t prefix_context,
                         casing_suffix_context_t suffix_context,
                         const char *iso639_language,
                         uninorm_t nf,
                         uint16_t *resultbuf, size_t *lengthp);
-extern uint32_t *
+__attribute__ ((visibility ("default"))) extern uint32_t *
        u32_ct_casefold (const uint32_t *s, size_t n,
                         casing_prefix_context_t prefix_context,
                         casing_suffix_context_t suffix_context,
@@ -314,19 +314,19 @@ extern uint32_t *
    case-mapping.  It can also be NULL, for no normalization.
    If successful, set *RESULTP to -1 if S1 < S2, 0 if S1 = S2, 1 if S1 > S2, and
    return 0.  Upon failure, return -1 with errno set.  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u8_casecmp (const uint8_t *s1, size_t n1,
                    const uint8_t *s2, size_t n2,
                    const char *iso639_language, uninorm_t nf, int *resultp);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u16_casecmp (const uint16_t *s1, size_t n1,
                     const uint16_t *s2, size_t n2,
                     const char *iso639_language, uninorm_t nf, int *resultp);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u32_casecmp (const uint32_t *s1, size_t n1,
                     const uint32_t *s2, size_t n2,
                     const char *iso639_language, uninorm_t nf, int *resultp);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        ulc_casecmp (const char *s1, size_t n1,
                     const char *s2, size_t n2,
                     const char *iso639_language, uninorm_t nf, int *resultp);
@@ -335,16 +335,16 @@ extern int
    a way that comparing uN_casexfrm (S1) and uN_casexfrm (S2) with the gnulib
    function memcmp2() is equivalent to comparing S1 and S2 with uN_casecoll().
    NF must be either UNINORM_NFC, UNINORM_NFKC, or NULL for no normalization.  */
-extern char *
+__attribute__ ((visibility ("default"))) extern char *
        u8_casexfrm (const uint8_t *s, size_t n, const char *iso639_language,
                     uninorm_t nf, char *resultbuf, size_t *lengthp);
-extern char *
+__attribute__ ((visibility ("default"))) extern char *
        u16_casexfrm (const uint16_t *s, size_t n, const char *iso639_language,
                      uninorm_t nf, char *resultbuf, size_t *lengthp);
-extern char *
+__attribute__ ((visibility ("default"))) extern char *
        u32_casexfrm (const uint32_t *s, size_t n, const char *iso639_language,
                      uninorm_t nf, char *resultbuf, size_t *lengthp);
-extern char *
+__attribute__ ((visibility ("default"))) extern char *
        ulc_casexfrm (const char *s, size_t n, const char *iso639_language,
                      uninorm_t nf, char *resultbuf, size_t *lengthp);
 
@@ -355,19 +355,19 @@ extern char *
    be NULL, for no normalization.
    If successful, set *RESULTP to -1 if S1 < S2, 0 if S1 = S2, 1 if S1 > S2, and
    return 0.  Upon failure, return -1 with errno set.  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u8_casecoll (const uint8_t *s1, size_t n1,
                     const uint8_t *s2, size_t n2,
                     const char *iso639_language, uninorm_t nf, int *resultp);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u16_casecoll (const uint16_t *s1, size_t n1,
                      const uint16_t *s2, size_t n2,
                      const char *iso639_language, uninorm_t nf, int *resultp);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u32_casecoll (const uint32_t *s1, size_t n1,
                      const uint32_t *s2, size_t n2,
                      const char *iso639_language, uninorm_t nf, int *resultp);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        ulc_casecoll (const char *s1, size_t n1,
                      const char *s2, size_t n2,
                      const char *iso639_language, uninorm_t nf, int *resultp);
@@ -375,60 +375,60 @@ extern int
 
 /* Set *RESULTP to true if mapping NFD(S) to upper case is a no-op, or to false
    otherwise, and return 0.  Upon failure, return -1 with errno set.  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u8_is_uppercase (const uint8_t *s, size_t n,
                         const char *iso639_language,
                         bool *resultp);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u16_is_uppercase (const uint16_t *s, size_t n,
                          const char *iso639_language,
                          bool *resultp);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u32_is_uppercase (const uint32_t *s, size_t n,
                          const char *iso639_language,
                          bool *resultp);
 
 /* Set *RESULTP to true if mapping NFD(S) to lower case is a no-op, or to false
    otherwise, and return 0.  Upon failure, return -1 with errno set.  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u8_is_lowercase (const uint8_t *s, size_t n,
                         const char *iso639_language,
                         bool *resultp);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u16_is_lowercase (const uint16_t *s, size_t n,
                          const char *iso639_language,
                          bool *resultp);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u32_is_lowercase (const uint32_t *s, size_t n,
                          const char *iso639_language,
                          bool *resultp);
 
 /* Set *RESULTP to true if mapping NFD(S) to title case is a no-op, or to false
    otherwise, and return 0.  Upon failure, return -1 with errno set.  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u8_is_titlecase (const uint8_t *s, size_t n,
                         const char *iso639_language,
                         bool *resultp);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u16_is_titlecase (const uint16_t *s, size_t n,
                          const char *iso639_language,
                          bool *resultp);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u32_is_titlecase (const uint32_t *s, size_t n,
                          const char *iso639_language,
                          bool *resultp);
 
 /* Set *RESULTP to true if applying case folding to NFD(S) is a no-op, or to
    false otherwise, and return 0.  Upon failure, return -1 with errno set.  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u8_is_casefolded (const uint8_t *s, size_t n,
                          const char *iso639_language,
                          bool *resultp);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u16_is_casefolded (const uint16_t *s, size_t n,
                           const char *iso639_language,
                           bool *resultp);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u32_is_casefolded (const uint32_t *s, size_t n,
                           const char *iso639_language,
                           bool *resultp);
@@ -439,15 +439,15 @@ extern int
    under the lower case mapping, and under the title case mapping; in other
    words, when NFD(S) consists entirely of caseless characters.
    Upon failure, return -1 with errno set.  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u8_is_cased (const uint8_t *s, size_t n,
                     const char *iso639_language,
                     bool *resultp);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u16_is_cased (const uint16_t *s, size_t n,
                      const char *iso639_language,
                      bool *resultp);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u32_is_cased (const uint32_t *s, size_t n,
                      const char *iso639_language,
                      bool *resultp);

@@ -84,7 +84,7 @@ enum
    ucs_t elements.
    When a decomposition exists, DECOMPOSITION[0..N-1] and *DECOMP_TAG are
    filled and N is returned.  Otherwise -1 is returned.  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
        uc_decomposition (ucs4_t uc, int *decomp_tag, ucs4_t *decomposition);
 
 /* Return the canonical character decomposition mapping of a Unicode character.
@@ -92,7 +92,7 @@ extern int
    ucs_t elements.
    When a decomposition exists, DECOMPOSITION[0..N-1] is filled and N is
    returned.  Otherwise -1 is returned.  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
        uc_canonical_decomposition (ucs4_t uc, ucs4_t *decomposition);
 
 
@@ -102,7 +102,7 @@ extern int
    Return 0 otherwise.
    Not all decompositions can be recombined using this function.  See the
    Unicode file CompositionExclusions.txt for details.  */
-extern ucs4_t
+__attribute__ ((visibility ("default"))) extern ucs4_t
        uc_composition (ucs4_t uc1, ucs4_t uc2)
        _UC_ATTRIBUTE_CONST;
 
@@ -139,19 +139,19 @@ extern LIBUNISTRING_DLL_VARIABLE const struct unicode_normalization_form uninorm
 
 /* Return the decomposing variant of a normalization form.
    This maps NFC,NFD -> NFD and NFKC,NFKD -> NFKD.  */
-extern uninorm_t
+__attribute__ ((visibility ("default"))) extern uninorm_t
        uninorm_decomposing_form (uninorm_t nf)
        _UC_ATTRIBUTE_PURE;
 
 
 /* Return the specified normalization form of a string.  */
-extern uint8_t *
+__attribute__ ((visibility ("default"))) extern uint8_t *
        u8_normalize (uninorm_t nf, const uint8_t *s, size_t n,
                      uint8_t *resultbuf, size_t *lengthp);
-extern uint16_t *
+__attribute__ ((visibility ("default"))) extern uint16_t *
        u16_normalize (uninorm_t nf, const uint16_t *s, size_t n,
                       uint16_t *resultbuf, size_t *lengthp);
-extern uint32_t *
+__attribute__ ((visibility ("default"))) extern uint32_t *
        u32_normalize (uninorm_t nf, const uint32_t *s, size_t n,
                       uint32_t *resultbuf, size_t *lengthp);
 
@@ -160,13 +160,13 @@ extern uint32_t *
    NF must be either UNINORM_NFD or UNINORM_NFKD.
    If successful, set *RESULTP to -1 if S1 < S2, 0 if S1 = S2, 1 if S1 > S2, and
    return 0.  Upon failure, return -1 with errno set.  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u8_normcmp (const uint8_t *s1, size_t n1, const uint8_t *s2, size_t n2,
                    uninorm_t nf, int *resultp);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u16_normcmp (const uint16_t *s1, size_t n1, const uint16_t *s2, size_t n2,
                     uninorm_t nf, int *resultp);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u32_normcmp (const uint32_t *s1, size_t n1, const uint32_t *s2, size_t n2,
                     uninorm_t nf, int *resultp);
 
@@ -175,13 +175,13 @@ extern int
    a way that comparing uN_normxfrm (S1) and uN_normxfrm (S2) with uN_cmp2() is
    equivalent to comparing S1 and S2 with uN_normcoll().
    NF must be either UNINORM_NFC or UNINORM_NFKC.  */
-extern char *
+__attribute__ ((visibility ("default"))) extern char *
        u8_normxfrm (const uint8_t *s, size_t n, uninorm_t nf,
                     char *resultbuf, size_t *lengthp);
-extern char *
+__attribute__ ((visibility ("default"))) extern char *
        u16_normxfrm (const uint16_t *s, size_t n, uninorm_t nf,
                      char *resultbuf, size_t *lengthp);
-extern char *
+__attribute__ ((visibility ("default"))) extern char *
        u32_normxfrm (const uint32_t *s, size_t n, uninorm_t nf,
                      char *resultbuf, size_t *lengthp);
 
@@ -191,13 +191,13 @@ extern char *
    NF must be either UNINORM_NFC or UNINORM_NFKC.
    If successful, set *RESULTP to -1 if S1 < S2, 0 if S1 = S2, 1 if S1 > S2, and
    return 0.  Upon failure, return -1 with errno set.  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u8_normcoll (const uint8_t *s1, size_t n1, const uint8_t *s2, size_t n2,
                     uninorm_t nf, int *resultp);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u16_normcoll (const uint16_t *s1, size_t n1, const uint16_t *s2, size_t n2,
                      uninorm_t nf, int *resultp);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u32_normcoll (const uint32_t *s1, size_t n1, const uint32_t *s2, size_t n2,
                      uninorm_t nf, int *resultp);
 
@@ -218,14 +218,14 @@ struct uninorm_filter;
    stream_func (stream_data, uc) receives the Unicode character uc
    and returns 0 if successful, or -1 with errno set upon failure.
    Return the new filter, or NULL with errno set upon failure.  */
-extern struct uninorm_filter *
+__attribute__ ((visibility ("default"))) extern struct uninorm_filter *
        uninorm_filter_create (uninorm_t nf,
                               int (*stream_func) (void *stream_data, ucs4_t uc),
                               void *stream_data);
 
 /* Stuff a Unicode character into a normalizing filter.
    Return 0 if successful, or -1 with errno set upon failure.  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
        uninorm_filter_write (struct uninorm_filter *filter, ucs4_t uc);
 
 /* Bring data buffered in the filter to its destination, the encapsulated
@@ -234,13 +234,13 @@ extern int
    Note! If after calling this function, additional characters are written
    into the filter, the resulting character sequence in the encapsulated stream
    will not necessarily be normalized.  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
        uninorm_filter_flush (struct uninorm_filter *filter);
 
 /* Bring data buffered in the filter to its destination, the encapsulated
    stream, then close and free the filter.
    Return 0 if successful, or -1 with errno set upon failure.  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
        uninorm_filter_free (struct uninorm_filter *filter);
 
 

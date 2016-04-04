@@ -57,16 +57,16 @@ enum
           hyphenation rules.
    p[i] = UC_BREAK_PROHIBITED means that s[i-1] and s[i] must not be separated.
  */
-extern void
+__attribute__ ((visibility ("default"))) extern void
        u8_possible_linebreaks (const uint8_t *s, size_t n,
                                const char *encoding, char *p);
-extern void
+__attribute__ ((visibility ("default"))) extern void
        u16_possible_linebreaks (const uint16_t *s, size_t n,
                                 const char *encoding, char *p);
-extern void
+__attribute__ ((visibility ("default"))) extern void
        u32_possible_linebreaks (const uint32_t *s, size_t n,
                                 const char *encoding, char *p);
-extern void
+__attribute__ ((visibility ("default"))) extern void
        ulc_possible_linebreaks (const char *s, size_t n,
                                 const char *encoding, char *p);
 
@@ -81,22 +81,22 @@ extern void
    Return the column after the end of the string, and store the result at
    p[0..n-1].
  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u8_width_linebreaks (const uint8_t *s, size_t n, int width,
                             int start_column, int at_end_columns,
                             const char *o, const char *encoding,
                             char *p);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u16_width_linebreaks (const uint16_t *s, size_t n, int width,
                              int start_column, int at_end_columns,
                              const char *o, const char *encoding,
                              char *p);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        u32_width_linebreaks (const uint32_t *s, size_t n, int width,
                              int start_column, int at_end_columns,
                              const char *o, const char *encoding,
                              char *p);
-extern int
+__attribute__ ((visibility ("default"))) extern int
        ulc_width_linebreaks (const char *s, size_t n, int width,
                              int start_column, int at_end_columns,
                              const char *o, const char *encoding,

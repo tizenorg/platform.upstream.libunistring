@@ -54,19 +54,19 @@ extern "C" {
    otherwise.
    In case of error: NULL is returned and errno is set.  Particular errno
    values: EINVAL, EILSEQ, ENOMEM.  */
-extern uint8_t *
+__attribute__ ((visibility ("default"))) extern uint8_t *
        u8_conv_from_encoding (const char *fromcode,
                               enum iconv_ilseq_handler handler,
                               const char *src, size_t srclen,
                               size_t *offsets,
                               uint8_t *resultbuf, size_t *lengthp);
-extern uint16_t *
+__attribute__ ((visibility ("default"))) extern uint16_t *
        u16_conv_from_encoding (const char *fromcode,
                                enum iconv_ilseq_handler handler,
                                const char *src, size_t srclen,
                                size_t *offsets,
                                uint16_t *resultbuf, size_t *lengthp);
-extern uint32_t *
+__attribute__ ((visibility ("default"))) extern uint32_t *
        u32_conv_from_encoding (const char *fromcode,
                                enum iconv_ilseq_handler handler,
                                const char *src, size_t srclen,
@@ -91,19 +91,19 @@ extern uint32_t *
    allocation was necessary, or a freshly allocated memory block otherwise.
    In case of error: NULL is returned and errno is set.  Particular errno
    values: EINVAL, EILSEQ, ENOMEM.  */
-extern char *
+__attribute__ ((visibility ("default"))) extern char *
        u8_conv_to_encoding (const char *tocode,
                             enum iconv_ilseq_handler handler,
                             const uint8_t *src, size_t srclen,
                             size_t *offsets,
                             char *resultbuf, size_t *lengthp);
-extern char *
+__attribute__ ((visibility ("default"))) extern char *
        u16_conv_to_encoding (const char *tocode,
                              enum iconv_ilseq_handler handler,
                              const uint16_t *src, size_t srclen,
                              size_t *offsets,
                              char *resultbuf, size_t *lengthp);
-extern char *
+__attribute__ ((visibility ("default"))) extern char *
        u32_conv_to_encoding (const char *tocode,
                              enum iconv_ilseq_handler handler,
                              const uint32_t *src, size_t srclen,
@@ -113,15 +113,15 @@ extern char *
 /* Converts a NUL terminated string from a given encoding.
    The result is malloc allocated, or NULL (with errno set) in case of error.
    Particular errno values: EILSEQ, ENOMEM.  */
-extern uint8_t *
+__attribute__ ((visibility ("default"))) extern uint8_t *
        u8_strconv_from_encoding (const char *string,
                                  const char *fromcode,
                                  enum iconv_ilseq_handler handler);
-extern uint16_t *
+__attribute__ ((visibility ("default"))) extern uint16_t *
        u16_strconv_from_encoding (const char *string,
                                   const char *fromcode,
                                   enum iconv_ilseq_handler handler);
-extern uint32_t *
+__attribute__ ((visibility ("default"))) extern uint32_t *
        u32_strconv_from_encoding (const char *string,
                                   const char *fromcode,
                                   enum iconv_ilseq_handler handler);
@@ -129,15 +129,15 @@ extern uint32_t *
 /* Converts a NUL terminated string to a given encoding.
    The result is malloc allocated, or NULL (with errno set) in case of error.
    Particular errno values: EILSEQ, ENOMEM.  */
-extern char *
+__attribute__ ((visibility ("default"))) extern char *
        u8_strconv_to_encoding (const uint8_t *string,
                                const char *tocode,
                                enum iconv_ilseq_handler handler);
-extern char *
+__attribute__ ((visibility ("default"))) extern char *
        u16_strconv_to_encoding (const uint16_t *string,
                                 const char *tocode,
                                 enum iconv_ilseq_handler handler);
-extern char *
+__attribute__ ((visibility ("default"))) extern char *
        u32_strconv_to_encoding (const uint32_t *string,
                                 const char *tocode,
                                 enum iconv_ilseq_handler handler);
@@ -145,21 +145,21 @@ extern char *
 /* Converts a NUL terminated string from the locale encoding.
    The result is malloc allocated, or NULL (with errno set) in case of error.
    Particular errno values: ENOMEM.  */
-extern uint8_t *
+__attribute__ ((visibility ("default"))) extern uint8_t *
        u8_strconv_from_locale (const char *string);
-extern uint16_t *
+__attribute__ ((visibility ("default"))) extern uint16_t *
        u16_strconv_from_locale (const char *string);
-extern uint32_t *
+__attribute__ ((visibility ("default"))) extern uint32_t *
        u32_strconv_from_locale (const char *string);
 
 /* Converts a NUL terminated string to the locale encoding.
    The result is malloc allocated, or NULL (with errno set) in case of error.
    Particular errno values: ENOMEM.  */
-extern char *
+__attribute__ ((visibility ("default"))) extern char *
        u8_strconv_to_locale (const uint8_t *string);
-extern char *
+__attribute__ ((visibility ("default"))) extern char *
        u16_strconv_to_locale (const uint16_t *string);
-extern char *
+__attribute__ ((visibility ("default"))) extern char *
        u32_strconv_to_locale (const uint32_t *string);
 
 

@@ -54,7 +54,7 @@ enum
 };
 
 /* Return the Word_Break property of a Unicode character.  */
-extern int
+__attribute__ ((visibility ("default"))) extern int
        uc_wordbreak_property (ucs4_t uc)
        _UC_ATTRIBUTE_CONST;
 
@@ -66,13 +66,13 @@ extern int
    p[i] = 1 means that there is a word boundary between s[i-1] and s[i].
    p[i] = 0 means that s[i-1] and s[i] must not be separated.
  */
-extern void
+__attribute__ ((visibility ("default"))) extern void
        u8_wordbreaks (const uint8_t *s, size_t n, char *p);
-extern void
+__attribute__ ((visibility ("default"))) extern void
        u16_wordbreaks (const uint16_t *s, size_t n, char *p);
-extern void
+__attribute__ ((visibility ("default"))) extern void
        u32_wordbreaks (const uint32_t *s, size_t n, char *p);
-extern void
+__attribute__ ((visibility ("default"))) extern void
        ulc_wordbreaks (const char *s, size_t n, char *p);
 
 /* ========================================================================= */
